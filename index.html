@@ -58,6 +58,7 @@
     <!-- 2. Interactive Before & After Portfolio -->
     <section class="portfolio" id="portfolio">
         <div class="container">
+            <!-- Header & Selector (hidden on mobile) -->
             <div class="flex justify-between items-center mb-lg portfolio-header ag-reveal">
                 <h2 class="section-title text-accent m-0" id="portfolio-title">Buckhead Kitchen</h2>
                 <div class="portfolio-selector">
@@ -67,21 +68,18 @@
                 </div>
             </div>
 
+            <!-- DESKTOP: Before/After Slider -->
             <div class="slider-container ag-reveal" id="portfolio-slider">
-                <!-- 'After' Image (Bottom layer) -->
                 <img src="https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=2560&auto=format&fit=crop"
-                    alt="Luxury After" class="slider-image after" id="port-img-after">
-
-                <!-- 'Before' Image (Top layer clipped) -->
+                    alt="Luxury Kitchen After" class="slider-image after" id="port-img-after">
                 <div class="slider-clip" id="port-slider-clip">
                     <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=2560&auto=format&fit=crop"
-                        alt="Standard Before" class="slider-image before" id="port-img-before">
+                        alt="Kitchen Before" class="slider-image before" id="port-img-before">
                 </div>
-
-                <!-- Slider Control -->
                 <div class="slider-handle" id="port-slider-handle"></div>
             </div>
 
+            <!-- DESKTOP: Project Details -->
             <div class="project-details flex justify-between ag-reveal">
                 <div>
                     <h4 class="text-smoke">Location</h4>
@@ -100,8 +98,38 @@
                     <p id="port-materials">Calacatta Gold Marble, Custom Oak</p>
                 </div>
             </div>
+
+            <!-- MOBILE: Portfolio Cards Grid -->
+            <h2 class="section-title text-accent" style="display: none;" id="portfolio-title-mobile">Our Portfolio</h2>
+            <div class="portfolio-cards-grid">
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=800&auto=format&fit=crop"
+                        alt="Luxury Kitchen Remodel">
+                    <div class="portfolio-card-info">
+                        <h3>Buckhead Kitchen</h3>
+                        <p>Calacatta Gold Marble · 12 Weeks · Buckhead, Atlanta</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop"
+                        alt="Master Bathroom Remodel">
+                    <div class="portfolio-card-info">
+                        <h3>Roswell Master Bath</h3>
+                        <p>Matte Black Fixtures · 8 Weeks · Roswell, Georgia</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1595846519845-68e298c2cebc?q=80&w=800&auto=format&fit=crop"
+                        alt="Luxury Basement Finishing">
+                    <div class="portfolio-card-info">
+                        <h3>Alpharetta Entertaining Area</h3>
+                        <p>Luxury Vinyl Plank · 14 Weeks · Alpharetta, Georgia</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
 
     <!-- 3. 3-Step Process & Guarantees (Interactive) -->
     <section class="guarantees" id="process">

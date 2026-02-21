@@ -1,27 +1,102 @@
-:root {
-  /* Core Palette: Silent Elegance (UI/UX Pro Max) */
-  --obsidian-black: #1C1917;
-  /* Premium dark */
-  --cream-white: #FAFAF9;
-  /* Warm off-white */
-  --smoke-gray: #78716C;
-  /* Warm secondary gray */
-  --metallic-accent: #CA8A04;
-  /* Gold CTA/Accent */
-  --steel-gray: #D6D3D1;
-  /* Borders and subtle backgrounds */
+/* =============================================================
+   JC MILIAN CONSTRUCTION — UI/UX Pro Max Edition
+   Silent Elegance + Crimson Power Palette
+   ============================================================= */
 
-  /* Typography (Classic Elegant) */
+:root {
+  --obsidian-black: #1C1917;
+  --cream-white: #FAFAF9;
+  --smoke-gray: #78716C;
+  --metallic-accent: #C0392B;
+  /* Deep Crimson Red */
+  --metallic-accent-light: #E74C3C;
+  /* Light Red for hover */
+  --steel-gray: #D6D3D1;
+
   --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
   --font-secondary: 'Playfair Display', serif;
 
-  /* Transitions & Animation (Antigravity Style) */
   --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-smooth: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   --transition-slow: 1.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Base Reset & Smooth Scrolling */
+/* =============================================
+   PREMIUM MOTION ANIMATIONS
+   ============================================= */
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+
+  100% {
+    transform: translateX(250%) skewX(-15deg);
+  }
+}
+
+@keyframes magnetic-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.45);
+  }
+
+  50% {
+    box-shadow: 0 0 0 14px rgba(192, 57, 43, 0);
+  }
+}
+
+@keyframes float-up {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes img-entrance {
+  from {
+    transform: scale(1.07);
+    opacity: 0.8;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes panImage {
+  0% {
+    transform: scale(1.0);
+  }
+
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* =============================================
+   BASE RESET
+   ============================================= */
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -38,7 +113,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Typography Utilities */
 h1,
 h2,
 h3,
@@ -50,7 +124,6 @@ h6 {
   line-height: 1.1;
   margin: 0;
   letter-spacing: -0.05em;
-  /* Pro Max Exaggerated Typography */
 }
 
 .text-accent {
@@ -61,11 +134,15 @@ h6 {
   color: var(--smoke-gray);
 }
 
-/* Antigravity Reveals (Initial state for JS Observer) */
+/* =============================================
+   ANTIGRAVITY SCROLL REVEALS
+   ============================================= */
+
 .ag-reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .ag-reveal.is-visible {
@@ -73,7 +150,10 @@ h6 {
   transform: translateY(0);
 }
 
-/* Grid & Layout Utilities */
+/* =============================================
+   LAYOUT UTILITIES
+   ============================================= */
+
 .container {
   width: 100%;
   max-width: 1440px;
@@ -102,7 +182,18 @@ h6 {
   justify-content: center;
 }
 
-/* Buttons */
+.m-0 {
+  margin: 0;
+}
+
+.mb-lg {
+  margin-bottom: 3rem;
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -117,14 +208,12 @@ h6 {
   border: 1px solid transparent;
   cursor: pointer;
   transition: all var(--transition-smooth);
-  border-radius: 0px;
-  /* Sharp edges for luxury minimalist tension */
+  border-radius: 0;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(28, 25, 23, 0.15);
-  /* Dimensional Layering */
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(28, 25, 23, 0.2);
 }
 
 .btn-primary {
@@ -132,6 +221,8 @@ h6 {
   color: var(--metallic-accent);
   position: relative;
   overflow: hidden;
+  border: 1px solid var(--metallic-accent);
+  animation: magnetic-pulse 3s ease-in-out infinite;
 }
 
 .btn-primary::before {
@@ -160,7 +251,7 @@ h6 {
 }
 
 .btn-primary:hover span {
-  color: var(--obsidian-black);
+  color: var(--cream-white);
 }
 
 .btn-outline {
@@ -171,10 +262,13 @@ h6 {
 
 .btn-outline:hover {
   background-color: var(--metallic-accent);
-  color: var(--obsidian-black);
+  color: var(--cream-white);
 }
 
-/* Navigation */
+/* =============================================
+   NAVIGATION
+   ============================================= */
+
 nav {
   position: fixed;
   top: 0;
@@ -239,7 +333,10 @@ nav.scrolled {
   width: 100%;
 }
 
-/* Hero Section (Cinematographic Entrance) */
+/* =============================================
+   HERO SECTION
+   ============================================= */
+
 .hero {
   height: 100vh;
   min-height: 800px;
@@ -266,24 +363,10 @@ nav.scrolled {
   right: 0;
   width: 50%;
   height: 100%;
-  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2560&auto=format&fit=crop');
+  background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2560&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
   z-index: 1;
-}
-
-/* Subtle pan animation */
-@keyframes panImage {
-  0% {
-    transform: scale(1.0);
-  }
-
-  100% {
-    transform: scale(1.05);
-  }
-}
-
-.hero-image {
   animation: panImage 20s linear infinite alternate;
 }
 
@@ -296,7 +379,6 @@ nav.scrolled {
 
 .hero-title {
   font-size: clamp(4rem, 8vw, 8.5rem);
-  /* Exaggerated Minimalism */
   font-weight: 400;
   margin-bottom: 1.5rem;
   color: var(--obsidian-black);
@@ -312,7 +394,10 @@ nav.scrolled {
   letter-spacing: -0.01em;
 }
 
-/* Services Catalog (Asymmetrical Grid) */
+/* =============================================
+   SERVICES CATALOG
+   ============================================= */
+
 .services {
   padding: 10rem 0;
   background-color: var(--cream-white);
@@ -337,26 +422,45 @@ nav.scrolled {
   position: relative;
   overflow: hidden;
   background: var(--steel-gray);
-  border-radius: 0px;
+  border-radius: 0;
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .service-card:hover {
   transform: translateY(-15px);
   box-shadow: 0 30px 60px rgba(28, 25, 23, 0.25);
-  /* Deep Dimensional Layering */
 }
 
 .service-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
-  filter: grayscale(100%) contrast(1.2);
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+  filter: grayscale(80%) contrast(1.1);
+  animation: img-entrance 1s ease-out both;
+}
+
+/* Shimmer sweep on hover */
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.service-card:hover::after {
+  opacity: 1;
+  animation: shimmer-sweep 0.7s ease-out forwards;
 }
 
 .service-card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.07);
   filter: grayscale(0%) contrast(1);
 }
 
@@ -388,7 +492,7 @@ nav.scrolled {
   transform: translateY(0);
 }
 
-/* Grid Layout Assignments */
+/* Grid Sizes */
 .card-large {
   grid-column: span 8;
   height: 600px;
@@ -409,8 +513,10 @@ nav.scrolled {
   height: 450px;
 }
 
+/* =============================================
+   3-STEP PROCESS & GUARANTEES
+   ============================================= */
 
-/* 3-Step Guarantees */
 .guarantees {
   padding: 8rem 0;
   background-color: var(--cream-white);
@@ -434,7 +540,6 @@ nav.scrolled {
 
 .step-item:not(.active):hover {
   background-color: rgba(234, 232, 228, 0.5);
-  /* light steel gray */
 }
 
 .step-item.active {
@@ -457,11 +562,14 @@ nav.scrolled {
 }
 
 .step-number {
-  font-family: var(--font-secondary);
-  font-size: 1rem;
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   color: var(--metallic-accent);
   margin-bottom: 1rem;
   display: block;
+  text-transform: uppercase;
 }
 
 .step-item h3 {
@@ -502,19 +610,14 @@ nav.scrolled {
   color: var(--metallic-accent);
 }
 
-/* Before & After Slider */
+/* =============================================
+   PORTFOLIO (BEFORE & AFTER SLIDER — DESKTOP)
+   ============================================= */
+
 .portfolio {
   padding: 8rem 0;
   background-color: var(--obsidian-black);
   color: var(--cream-white);
-}
-
-.mb-lg {
-  margin-bottom: 3rem;
-}
-
-.m-0 {
-  margin: 0;
 }
 
 .portfolio-selector {
@@ -532,7 +635,10 @@ nav.scrolled {
   padding: 0.5rem 1.5rem;
   cursor: pointer;
   border-radius: 4px;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   transition: var(--transition-fast);
 }
 
@@ -542,8 +648,8 @@ nav.scrolled {
 
 .port-btn.active {
   background-color: var(--metallic-accent);
-  color: var(--obsidian-black);
-  font-weight: 500;
+  color: var(--cream-white);
+  font-weight: 600;
 }
 
 .slider-container {
@@ -581,7 +687,6 @@ nav.scrolled {
 .slider-image.before {
   width: 100vw;
   max-width: 1440px;
-  /* match container */
 }
 
 .slider-handle {
@@ -622,7 +727,69 @@ nav.scrolled {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Lead Generation Form (Slide-over approach configured in CSS) & Social Proof */
+/* =============================================
+   PORTFOLIO CARDS (MOBILE-FIRST)
+   ============================================= */
+
+.portfolio-cards-grid {
+  display: none;
+  /* shown only on mobile via media query */
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  background: var(--obsidian-black);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  border-left: 3px solid transparent;
+}
+
+.portfolio-card:hover,
+.portfolio-card.active {
+  border-left-color: var(--metallic-accent);
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+  filter: grayscale(30%);
+}
+
+.portfolio-card:hover img,
+.portfolio-card.active img {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+}
+
+.portfolio-card-info {
+  padding: 1.5rem;
+  border-top: 2px solid var(--metallic-accent);
+}
+
+.portfolio-card-info h3 {
+  color: var(--cream-white);
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.portfolio-card-info p {
+  font-size: 0.85rem;
+  color: var(--smoke-gray);
+  margin: 0;
+}
+
+/* =============================================
+   CHECKOUT / LEAD FORM
+   ============================================= */
+
 .checkout {
   padding: 10rem 0;
   background-color: var(--cream-white);
@@ -646,21 +813,12 @@ nav.scrolled {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Reviews Carousel */
+/* =============================================
+   REVIEWS CAROUSEL
+   ============================================= */
+
 .review-slide {
   animation: fade-in 0.5s ease-in-out;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateX(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .review-controls .dot {
@@ -676,6 +834,10 @@ nav.scrolled {
   background-color: var(--metallic-accent);
   transform: scale(1.2);
 }
+
+/* =============================================
+   FORM ELEMENTS (LUXURY INPUTS)
+   ============================================= */
 
 .form-group {
   margin-bottom: 2rem;
@@ -696,6 +858,7 @@ nav.scrolled {
   transition: all var(--transition-smooth);
   outline: none;
   border-radius: 0;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -727,7 +890,10 @@ nav.scrolled {
   margin-top: 2rem;
 }
 
-/* Footer / Blog Snippet */
+/* =============================================
+   BLOG SECTION
+   ============================================= */
+
 .editorial-blog {
   padding: 8rem 0;
   background-color: var(--steel-gray);
@@ -736,13 +902,17 @@ nav.scrolled {
 .blog-card {
   transition: all var(--transition-smooth);
   background: var(--cream-white);
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 .blog-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 30px 60px rgba(28, 25, 23, 0.15);
 }
+
+/* =============================================
+   FOOTER
+   ============================================= */
 
 footer {
   background-color: var(--obsidian-black);
@@ -760,6 +930,7 @@ footer {
   border: 1px solid var(--smoke-gray);
   color: var(--smoke-gray);
   border-radius: 50%;
+  text-decoration: none;
   transition: var(--transition-fast);
 }
 
@@ -769,7 +940,10 @@ footer {
   transform: translateY(-3px);
 }
 
-/* Media Queries */
+/* =============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================= */
+
 @media (max-width: 1024px) {
   .hero-bg {
     width: 100%;
@@ -783,6 +957,10 @@ footer {
     width: 100%;
     padding-right: 0;
     text-align: center;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
   }
 
   .grid-asymmetric {
@@ -817,6 +995,7 @@ footer {
 
   .checkout-grid {
     grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
   .portfolio-header {
@@ -828,5 +1007,34 @@ footer {
   .footer-top {
     flex-direction: column;
     text-align: center;
+  }
+
+  .trust-signals {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Hide slider, show portfolio cards */
+  .slider-container,
+  .portfolio-header .portfolio-selector,
+  .project-details {
+    display: none;
+  }
+
+  .portfolio-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
   }
 }
