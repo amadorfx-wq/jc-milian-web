@@ -212,4 +212,74 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* -------------------------------------------------------
+       CONSULTATION FORM — Web3Forms Async Submit
+       Sends email to jcmilianconstruction@gmail.com
+    ------------------------------------------------------- */
+    const consultForm = document.getElementById('consultationForm');
+    const formSuccess = document.getElementById('form-success');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (consultForm) {
+        consultForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Button loading state
+            const btnSpan = submitBtn.querySelector('span');
+            const originalText = btnSpan ? btnSpan.textContent : 'Request Private Consultation';
+            if (btnSpan) btnSpan.textContent = 'Sending…';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+
+            // Build payload manually from named fields (avoids botcheck / checkbox issues)
+            const payload = {
+                access_key: 'bbac8adb-e679-4bda-a295-6aa570369111',
+                subject: 'New Consultation Request — JC Milian Website',
+                from_name: 'JC Milian Website',
+                botcheck: '',   // must be empty string — never send as checked
+                fullName: (document.getElementById('fullName') || {}).value || '',
+                email: (document.getElementById('emailAddr') || {}).value || '',
+                phoneNumber: (document.getElementById('phoneNumber') || {}).value || '',
+                projectType: (document.getElementById('projectType') || {}).value || '',
+                projectZip: (document.getElementById('projectZip') || {}).value || '',
+            };
+            // Reply-to = the client's email so JC Milian can reply with one click
+            payload.replyto = payload.email;
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Hide form, show success message
+                    consultForm.style.display = 'none';
+                    if (formSuccess) {
+                        formSuccess.style.display = 'block';
+                    }
+                } else {
+                    // Surface exact error from Web3Forms for easier debugging
+                    console.error('Web3Forms error:', data);
+                    const errorMsg = (data && data.message) ? data.message : 'An unknown error occurred.';
+                    if (btnSpan) btnSpan.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    alert('Error: ' + errorMsg + '\n\nPlease call us directly at (678) 508-1879.');
+                }
+            } catch (error) {
+                console.warn('Network error with JS fetch. Falling back to native HTML submission...', error);
+                // If fetch fails (like local network restrictions), submit natively without JS
+                consultForm.submit();
+            }
+        });
+    }
+
 });
