@@ -110,31 +110,31 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --- Portfolio Gallery Selector Logic --- */
     const portData = {
         kitchen: {
-            title: "Buckhead Kitchen",
-            after: "https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=2560&auto=format&fit=crop",
-            before: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=2560&auto=format&fit=crop",
+            title: "Buckhead Kitchen Remodel",
+            after: "images/kitchen-after.jpg",
+            before: "images/kitchen-before.jpg",
             location: "Buckhead, Atlanta",
             duration: "12 Weeks",
-            challenge: "Seamless Structural Integration",
-            materials: "Calacatta Gold Marble, Custom Oak"
+            materials: "Calacatta Marble · White Oak",
+            budget: "$65,000 – $80,000"
         },
         bathroom: {
             title: "Roswell Master Bath",
-            after: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2560&auto=format&fit=crop",
-            before: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=2560&auto=format&fit=crop",
+            after: "images/bathroom-after.jpg",
+            before: "images/bathroom-before.jpg",
             location: "Roswell, Georgia",
             duration: "8 Weeks",
-            challenge: "Plumbing Relocation",
-            materials: "Matte Black Fixtures, Porcelain Tile"
+            materials: "Carrara Marble · Matte Black",
+            budget: "$35,000 – $45,000"
         },
         basement: {
-            title: "Alpharetta Entertaining Area",
-            after: "https://images.unsplash.com/photo-1595846519845-68e298c2cebc?q=80&w=2560&auto=format&fit=crop",
-            before: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2560&auto=format&fit=crop",
+            title: "Alpharetta Entertainment Room",
+            after: "images/basement-after.jpg",
+            before: "images/basement-before.jpg",
             location: "Alpharetta, Georgia",
             duration: "14 Weeks",
-            challenge: "Moisture Control & Lighting",
-            materials: "Luxury Vinyl Plank, Custom Bar"
+            materials: "Luxury Vinyl Plank · Wet Bar",
+            budget: "$40,000 – $55,000"
         }
     };
 
@@ -144,8 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const portImgBefore = document.getElementById('port-img-before');
     const portLocation = document.getElementById('port-location');
     const portDuration = document.getElementById('port-duration');
-    const portChallenge = document.getElementById('port-challenge');
     const portMaterials = document.getElementById('port-materials');
+    const portBudget = document.getElementById('port-budget');
+
 
     // We need to reset slider position when changing
     const resetSliderPosition = () => {
@@ -178,8 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 portLocation.textContent = data.location;
                 portDuration.textContent = data.duration;
-                portChallenge.textContent = data.challenge;
-                portMaterials.textContent = data.materials;
+                if (portMaterials) portMaterials.textContent = data.materials;
+                if (portBudget) portBudget.textContent = data.budget;
 
                 resetSliderPosition();
             }

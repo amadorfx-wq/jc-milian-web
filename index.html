@@ -58,9 +58,15 @@
     <!-- 2. Interactive Before & After Portfolio -->
     <section class="portfolio" id="portfolio">
         <div class="container">
-            <!-- Header & Selector (hidden on mobile) -->
+
+            <!-- Header & Project Selector -->
             <div class="flex justify-between items-center mb-lg portfolio-header ag-reveal">
-                <h2 class="section-title text-accent m-0" id="portfolio-title">Buckhead Kitchen</h2>
+                <div>
+                    <p class="text-smoke"
+                        style="font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem;">
+                        Drag to Compare</p>
+                    <h2 class="section-title text-accent m-0" id="portfolio-title">Buckhead Kitchen Remodel</h2>
+                </div>
                 <div class="portfolio-selector">
                     <button class="port-btn active" data-target="kitchen">Kitchen</button>
                     <button class="port-btn" data-target="bathroom">Bathroom</button>
@@ -68,20 +74,25 @@
                 </div>
             </div>
 
-            <!-- DESKTOP: Before/After Slider -->
+            <!-- DESKTOP: Before/After Drag Slider -->
             <div class="slider-container ag-reveal" id="portfolio-slider">
-                <!-- AFTER: Luxury Buckhead Kitchen -->
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2560&auto=format&fit=crop"
-                    alt="Buckhead Kitchen After" class="slider-image after" id="port-img-after">
-                <!-- BEFORE: Old outdated kitchen -->
+                <!-- AFTER (right side — bottom layer) -->
+                <img src="images/kitchen-after.jpg"
+                    alt="Buckhead Kitchen After — Luxury White Shaker Cabinets, Marble Countertops"
+                    class="slider-image after" id="port-img-after">
+                <!-- BEFORE (left side — clipped top layer) -->
                 <div class="slider-clip" id="port-slider-clip">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=2560&auto=format&fit=crop"
-                        alt="Buckhead Kitchen Before" class="slider-image before" id="port-img-before">
+                    <img src="images/kitchen-before.jpg" alt="Buckhead Kitchen Before — Outdated Dark Cabinets"
+                        class="slider-image before" id="port-img-before">
                 </div>
+                <!-- Labels -->
+                <span class="slider-label-before">BEFORE</span>
+                <span class="slider-label-after">AFTER</span>
+                <!-- Drag Handle -->
                 <div class="slider-handle" id="port-slider-handle"></div>
             </div>
 
-            <!-- DESKTOP: Project Details -->
+            <!-- Project Details Bar -->
             <div class="project-details flex justify-between ag-reveal">
                 <div>
                     <h4 class="text-smoke">Location</h4>
@@ -92,43 +103,58 @@
                     <p id="port-duration">12 Weeks</p>
                 </div>
                 <div>
-                    <h4 class="text-smoke">Challenge</h4>
-                    <p id="port-challenge">Seamless Structural Integration</p>
+                    <h4 class="text-smoke">Materials</h4>
+                    <p id="port-materials">Calacatta Marble · White Oak</p>
                 </div>
                 <div>
-                    <h4 class="text-smoke">Materials</h4>
-                    <p id="port-materials">Calacatta Gold Marble, Custom Oak</p>
+                    <h4 class="text-smoke">Budget Range</h4>
+                    <p id="port-budget">$65,000 – $80,000</p>
                 </div>
             </div>
 
-            <!-- MOBILE: Portfolio Cards Grid -->
-            <h2 class="section-title text-accent" style="display: none;" id="portfolio-title-mobile">Our Portfolio</h2>
+            <!-- MOBILE: Before/After Cards (stacked) -->
             <div class="portfolio-cards-grid">
-                <div class="portfolio-card">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop"
-                        alt="Luxury Kitchen Remodel Buckhead">
+                <!-- Kitchen -->
+                <div class="mobile-ba-card">
+                    <span class="ba-badge before-badge">BEFORE</span>
+                    <img src="images/kitchen-before.jpg" alt="Kitchen Before Remodel — Outdated Dark Cabinets">
+                </div>
+                <div class="mobile-ba-card">
+                    <span class="ba-badge after-badge">AFTER</span>
+                    <img src="images/kitchen-after.jpg" alt="Kitchen After Remodel — Luxury White Marble">
                     <div class="portfolio-card-info">
                         <h3>Buckhead Kitchen</h3>
-                        <p>Calacatta Gold Marble · 12 Weeks · Buckhead, Atlanta</p>
+                        <p>Calacatta Marble · White Shaker · 12 Weeks</p>
                     </div>
                 </div>
-                <div class="portfolio-card">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop"
-                        alt="Master Bathroom Remodel">
+                <!-- Bathroom -->
+                <div class="mobile-ba-card">
+                    <span class="ba-badge before-badge">BEFORE</span>
+                    <img src="images/bathroom-before.jpg" alt="Bathroom Before Remodel — Outdated Brass Fixtures">
+                </div>
+                <div class="mobile-ba-card">
+                    <span class="ba-badge after-badge">AFTER</span>
+                    <img src="images/bathroom-after.jpg" alt="Bathroom After Remodel — Spa Marble Luxury">
                     <div class="portfolio-card-info">
                         <h3>Roswell Master Bath</h3>
-                        <p>Matte Black Fixtures · 8 Weeks · Roswell, Georgia</p>
+                        <p>Carrara Marble · Matte Black · 8 Weeks</p>
                     </div>
                 </div>
-                <div class="portfolio-card">
-                    <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=800&auto=format&fit=crop"
-                        alt="Luxury Basement Finishing">
+                <!-- Basement -->
+                <div class="mobile-ba-card">
+                    <span class="ba-badge before-badge">BEFORE</span>
+                    <img src="images/basement-before.jpg" alt="Basement Before — Raw Unfinished Space">
+                </div>
+                <div class="mobile-ba-card">
+                    <span class="ba-badge after-badge">AFTER</span>
+                    <img src="images/basement-after.jpg" alt="Basement After — Luxury Entertainment Room">
                     <div class="portfolio-card-info">
-                        <h3>Alpharetta Entertaining Area</h3>
-                        <p>Luxury Vinyl Plank · 14 Weeks · Alpharetta, Georgia</p>
+                        <h3>Alpharetta Entertainment</h3>
+                        <p>Luxury Vinyl Plank · Wet Bar · 14 Weeks</p>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
